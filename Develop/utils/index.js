@@ -14,13 +14,18 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+// added 1.30.21
+const path = require('path');
+// end
+const generateMarkdown = require('./generateMarkdown');
 // TODO: Create an array of questions for user input
-inquirer
-  .prompt([
+// inquirer
+//   .prompt(
+    
+   const arrayQuestions = [
     //Project Title
     {
-      type: 'input',
+      type: "input",
       name: 'ProjectTitle',
       message: 'Enter your project title',
     },
@@ -55,7 +60,7 @@ inquirer
     },
     {
       type: 'list',
-      name: 'Application License  ',
+      name: 'Application License',
       message: 'Choose your Licence ',
       choices :['License 1', 'License 2','License 3']
     },
@@ -74,10 +79,19 @@ message: "Enter your github username.",
     name: "Email",
     message: 'Enter your Email Address',
     },
-  ])
-  .then((data) => {
-    fs.writeFile("HW7README.md",JSON.stringify(data, null, '\t'), (err) =>
-    err ? console.log(err) : console.log('Success!')
-  );
-console.log ("success");
-  });
+  ];
+
+
+  // TODO: Create a function to write README file
+  function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(),fileName),data);
+}
+
+function init(){
+    inquirer.prompt(arrayQuestions).then((inquirerResponses) => {
+        console.log('Success! Generating README ..');
+        writeToFile('README.md', generateMarkdown({...inquirerResponses}));
+    });
+}
+
+init();
