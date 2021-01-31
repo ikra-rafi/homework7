@@ -18,51 +18,70 @@
 // }
 
 // module.exports = generateMarkdown;
-function generateMarkdown(data) {
-
-  return `
-# <h1> ${data.project}</h1>
-![License](https://img.shields.io/static/v1?label=License&message=${encodeURIComponent(data.license)}&color=brightgreen)
+function renderLicenseBadge(license) {
+  if (license !== 'None'){
+      return`\n * [License](#license)\n`;
+    }
+    return '';
+}
   
-# Table of Contents:
-* [Description](#description)
+
+
+// TODO: Create a function that returns the license link
+// If there is no license, return an empty string
+function renderLicenseLink(license) {
+  if (license !== 'None'){
+    return`\n* [License](#license)\n`;
+  }
+  return '';
+}
+
+// TODO: Create a function that returns the license section of README
+// If there is no license, return an empty string
+function renderLicenseSection(license) {
+  if(license !== 'None'){
+      return `## License
+      
+  This project is licensed under the ${license} license.`;
+  }
+  return '';
+}
+
+// TODO: Create a function to generate markdown for README
+function generateMarkdown(data) {
+return `# ${data.title}
+${renderLicenseBadge(data.license)}
+## Description
+${data.description}
+## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
+${renderLicenseLink(data.license)}
+* [Contributing](#contributing) 
 * [Tests](#tests)
-* [Inquiries](#inquiries)
-  
-## Description:
-  
-${data.description}
-  
-## Installation:
-  
+* [Questions](#questions) 
+## Installation
+To install necessary dependencies, run the following command:
+\`\`\`
 ${data.installation}
-  
-## Usage:
-  
+\`\`\`
+## Usage
 ${data.usage}
-  
-## License: 
-${data.license}
-  
-## Contributing:
-  
+${renderLicenseSection(data.license)}
+## Contributing
 ${data.contributing}
-  
-## Tests:
-  
-${data.tests}
-  
-## Inquiries:
-  
-Any questions on this project, feel free to contact the developer at:
-  
-GitHub: <https://github.com/${encodeURIComponent(data.username)}>
-  
-Email: <${data.email}>
+## Tests
+To run tests, run the following command:
+\`\`\`
+${data.test}
+\`\`\`
+## License
+${data.licen}
+## Questions
+If you have any questions contact me directly at ${data.email}. 
+You can find more of my work at [${data.github}](http://github.com/${
+    data.github
+}/).
 `;
 }
 

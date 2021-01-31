@@ -24,61 +24,55 @@ const generateMarkdown = require('./generateMarkdown');
     
    const arrayQuestions = [
     //Project Title
-    {
-      type: "input",
-      name: 'ProjectTitle',
-      message: 'Enter your project title',
-    },
-    //Read me Description
+  
     {
       type: 'input',
-      name: 'Description',
-      message: 'Write a brief description of your project',
-    },
-    //Installation instruction
-    {
-      type: 'input',
-      name: 'Installation Instruction ',
-      message: 'Type in your installation instruction?',
-    },
-    // Usage information
-    {
-      type: 'input',
-      name: 'Usage ',
-      message: 'Please write usage information ',
-    },
-    //Input
-    {
-      type: 'input',
-      name: 'Contribution Guidelines ',
-      message: 'Please write Contribution Guidelines ',
+      name: 'title',
+      message: 'What is your project name?',
     },
     {
       type: 'input',
-      name: 'Test instruction  ',
-      message: 'Are there any test instruction ? ',
+      name: 'description',
+      message: 'Please write a short description of your project',
+      
     },
     {
-      type: 'list',
-      name: 'Application License',
-      message: 'Choose your Licence ',
-      choices :['License 1', 'License 2','License 3']
+        type: 'input',
+        name: 'installation',
+        message: 'What command should be run to install dependencies?',    
     },
     {
-type:"input",
-name :"questions",
-message: "Enter your github username.",
+        type: 'input',
+        name: 'usage',
+        message: 'What does the user need to know about using the repo?',    
     },
     {
-    type : "input",
-    name: "LinkedIn",
-    message: 'Enter your LinedIn URL.',
+        type: 'input',
+        name: 'contributing',
+        message: 'What does the user need to know about contributing to the repo?',    
     },
     {
-    type : "input",
-    name: "Email",
-    message: 'Enter your Email Address',
+        type: 'input',
+        name: 'test',
+        message: 'What command should be run to run tests?',    
     },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What kind of license should your project have?',  
+        choices: ['MIT','APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None']  
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'What is your GitHub username?',    
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email address',    
+    },
+ 
   ];
 
 
