@@ -54,7 +54,7 @@ const generateMarkdown = require('./generateMarkdown');
     {
         type: 'input',
         name: 'test',
-        message: 'What command should be run to run tests?',    
+        message: 'What command should be added to run tests?',    
     },
     {
         type: 'list',
@@ -70,7 +70,7 @@ const generateMarkdown = require('./generateMarkdown');
     {
         type: 'input',
         name: 'email',
-        message: 'What is your email address',    
+        message: 'What is your email address?',    
     },
  
   ];
@@ -83,7 +83,7 @@ const generateMarkdown = require('./generateMarkdown');
 
 function init(){
     inquirer.prompt(arrayQuestions).then((inquirerResponses) => {
-        console.log('Success! Generating README ..');
+        console.log('Success! You generated a README file ..');
         writeToFile('README.md', generateMarkdown({...inquirerResponses}));
     });
 }
